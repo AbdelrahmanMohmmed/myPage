@@ -4,15 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Mrgaren</title>
+    <script>document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark";</script>
+    <title>Mrgaren | Resume</title>
 </head>
 <body>
     <h1 id="hh1"></h1>
     <div class="topnav">
         <a href="index.html">Home</a>
-        <a  href="subject.html">Subject</a>
+        <a href="projects.html">Projects</a>
         <a class="active" href="community.html">Resume</a>
         <a href="about.html">About</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+    </div>
+      <!-- Summary -->
+      <div class="about-section">
+        <p>I'm a data talent with three sides: engineering, analysis, and science. I love taking raw, messy data and turning it into clean pipelines, clear dashboards, and smart predictions. With a B.Sc. in Computing and Data Science and hands-on freelance experience, I build end-to-end solutions — from web scraping and ETL pipelines to machine learning models and business reports. Pick a resume below, check out my skills, and let's build something great together!</p>
+        <p class="contact-line">📍 Cairo, Egypt &nbsp;·&nbsp; ✉️ abdulrahmanmohmmed376@gmail.com</p>
+      </div>
+
+      <!-- Resumes -->
+      <h2 class="section-title">My Resumes</h2>
+      <div class="row">
+        <div class="column resume-card">
+          <div class="card">
+            <span class="resume-icon">🔧</span>
+            <div class="container">
+              <h2>Data Engineer</h2>
+              <p class="title">Pipelines · Databases · ETL</p>
+              <p>Designing ETL pipelines, automating data workflows, and building reporting-ready datasets with Python, SQL, and Azure.</p>
+              <a class="button" href="https://drive.google.com/file/d/1lQnw5COTRk7vWm7-s-GSeMxBO-Hy4SUi/view?usp=sharing" target="_blank" rel="noopener">View Resume ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column resume-card">
+          <div class="card">
+            <span class="resume-icon">📊</span>
+            <div class="container">
+              <h2>Data Analysis</h2>
+              <p class="title">Reports · Dashboards · Insights</p>
+              <p>Turning raw data into clear reports and interactive dashboards with Excel, SQL, and Power BI to drive better decisions.</p>
+              <a class="button" href="https://drive.google.com/file/d/1Onz0hrWrbRPKqUzvjhcUg6jFlsyheCIm/view?usp=sharing" target="_blank" rel="noopener">View Resume ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="column resume-card">
+          <div class="card">
+            <span class="resume-icon">🧠</span>
+            <div class="container">
+              <h2>Data Science</h2>
+              <p class="title">Models · ML · Predictions</p>
+              <p>Building end-to-end ML solutions — from data collection and NLP to predictive models and model deployment.</p>
+              <a class="button" href="https://drive.google.com/file/d/1_BkjXuIApj8wsW61FuNRnCt83uW0cl-r/view?usp=sharing" target="_blank" rel="noopener">View Resume ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills">
+        <div class="skill">
+          <span class="skill-name">Python</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          <span class="skill-value">9/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">SQL</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          <span class="skill-value">9/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Excel</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          <span class="skill-value">9/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Pandas &amp; NumPy</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          <span class="skill-value">9/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Data Cleaning &amp; Validation</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          <span class="skill-value">9/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">ETL &amp; Data Pipelines</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+          <span class="skill-value">9/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Web Scraping</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+          <span class="skill-value">8/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Machine Learning</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+          <span class="skill-value">8/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">NLP</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+          <span class="skill-value">8/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Power BI</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+          <span class="skill-value">8/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Data Visualization</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+          <span class="skill-value">8/10</span>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Cloud (Azure &amp; AWS)</span>
+          <div class="skill-bar"><div class="skill-fill" style="width: 70%"></div></div>
+          <span class="skill-value">7/10</span>
+        </div>
       </div>
       <script src="index.js"></script>
 </body>

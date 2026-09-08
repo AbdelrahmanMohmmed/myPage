@@ -4,59 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Mrgaren</title>
+    <script>document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark";</script>
+    <title>Mrgaren | About</title>
 </head>
 <body>
     <h1 id="hh1"></h1>
     <div class="topnav">
       <a href="index.html">Home</a>
-      <a  href="subject.html">Subject</a>
-      <a  href="community.html">Resume</a>
+      <a href="projects.html">Projects</a>
+      <a href="community.html">Resume</a>
       <a class="active" href="about.html">About</a>
-      </div>
-      <div class="about-section">
-        <p>im happy for everyone here </p>
-        <p>to conntact with me please <a href="mailto:wovidoe23@gmail.com">click here</a></p>
-      </div>
-      
-      <h2 style="text-align:center">Our Team</h2>
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="images/madara.jpg" alt="Jane" style="width:100%">
-            <div class="container">
-              <h2>Madara Uchiha</h2>
-              <p class="AboutP">يمتلك عين الرينيجان لا يمكنك المزاح معه يستطيع انشاء المواقع والبرامج بدون كتابه سطر كود واحد </p>
-              <p>jane@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="images/madara.jpg" alt="Mike" style="width:100%">
-            <div class="container">
-              <h2>Mike Ross</h2>
-              <p class="AboutP">Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>mike@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="images/eren.jpeg" alt="John" style="width:100%">
-            <div class="container">
-              <h2>Eren Yegar</h2>
-              <p class="AboutP">بيدوس في اي مجال واي حاجه زي ما داس البشريه </p>
-              <p>john@example.com</p>
-              <p><button class="button">Contact</button></p>
-            </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+    </div>
+
+    <div class="about-section">
+      <p>Hi, I'm Abdelrahman Mohammed — a data scientist, engineer, and analyst from Cairo, Egypt. I'm studying Computing and Data Science at Alexandria University and I work as a freelancer, building everything from ETL pipelines and web scrapers to machine learning models and business dashboards. When I'm not working with data, I'm probably reading about it!</p>
+      <p class="contact-line">📍 Cairo, Egypt &nbsp;·&nbsp; ✉️ abdulrahmanmohmmed376@gmail.com &nbsp;·&nbsp; ☎️ +20 1211824202</p>
+    </div>
+
+    <h2 class="section-title">Education</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🎓</span>
+          <div class="container">
+            <h2>Alexandria University</h2>
+            <p class="title">B.Sc. in Computing &amp; Data Science</p>
+            <p>2022 – 2026 &nbsp;·&nbsp; Alexandria, Egypt</p>
+            <p>Machine Learning, Deep Learning, Statistical Analysis, Data Mining, Database Systems, Cloud Computing</p>
           </div>
         </div>
       </div>
-      <script src="index.js"></script>
+    </div>
+
+    <h2 class="section-title">Courses &amp; Certifications</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">📜</span>
+          <div class="container">
+            <h2>Data Scientist Professional Track</h2>
+            <p class="title">DataCamp · 2024</p>
+            <p>Python, SQL, Statistical Analysis, Data Visualization, Data Cleaning, Exploratory Data Analysis</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🤖</span>
+          <div class="container">
+            <h2>Machine Learning Scientist Track</h2>
+            <p class="title">DataCamp · 2025</p>
+            <p>Supervised &amp; Unsupervised Learning, Deep Learning, NLP, Feature Engineering, Model Deployment</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">⚙️</span>
+          <div class="container">
+            <h2>Data Engineering Track — DEPI</h2>
+            <p class="title">Digital Egypt Pioneers Initiative · 2024 – 2025</p>
+            <p>ETL Design, SQL, Azure Cloud Services, Data Pipelines, Cloud Computing Fundamentals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Work Experience</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">💼</span>
+          <div class="container">
+            <h2>Freelance Data Scientist &amp; Analyst</h2>
+            <p class="title">Mostaqel · 2024 – 2025 · Remote</p>
+            <p>Built an automated lead generation system that scraped 500+ companies daily.</p>
+            <p>Developed ETL pipelines that cut manual data entry by 15+ hours every week.</p>
+            <p>Trained ML models that predicted application success with 85% accuracy.</p>
+            <p>Automated daily, monthly, and yearly reports for stakeholders, saving 10+ hours weekly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Books I've Read</h2>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🐍</span>
+          <div class="container">
+            <h2>Python Crash Course</h2>
+            <p class="title">Eric Matthes</p>
+            <p>My first real Python book — it gave me a strong foundation in programming that everything else builds on.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🤖</span>
+          <div class="container">
+            <h2>Automate the Boring Stuff with Python</h2>
+            <p class="title">Al Sweigart</p>
+            <p>Where my love for automation started — writing scripts that save hours of boring manual work.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🏗️</span>
+          <div class="container">
+            <h2>Fundamentals of Data Engineering</h2>
+            <p class="title">Joe Reis &amp; Matt Housley</p>
+            <p>Understanding how data pipelines really work — from ingestion and storage to orchestration and serving.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🧠</span>
+          <div class="container">
+            <h2>Hands-On Machine Learning</h2>
+            <p class="title">Aurélien Géron</p>
+            <p>My go-to reference for building real ML models with scikit-learn and TensorFlow — from features to deployment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <span class="resume-icon">🗄️</span>
+          <div class="container">
+            <h2>SQL for Data Analysis</h2>
+            <p class="title">Cathy Tanimura</p>
+            <p>Leveled up my SQL beyond the basics — CTEs, window functions, and writing queries that actually answer business questions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>

@@ -1,151 +1,519 @@
-@font-face {
-  font-family: myfont;
-  src: url(font/EduAUVICWANTHand-VariableFont_wght.ttf);
-}
-body{
-    background-color: hsl(0, 20%, 84%);
-    font-size: 1.2rem;
-    text-transform: capitalize;
+/* ==========================================================================
+   Mrgaren Portfolio — stylesheet
+   Design tokens live at the top (:root) — change colors there to re-theme.
+   ========================================================================== */
 
-  }
-video{
-  margin: 10px;
+/* ---------- Custom font (handwriting, used for the site title) ---------- */
+@font-face {
+  font-family: "EduHand";
+  src: url("font/EduAUVICWANTHand-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 800;
+  font-display: swap;
 }
-p{
-  font-family: myfont;
-  text-transform: none;
-  line-height: 1.9em;
-  word-spacing: 5px;
+
+/* ---------- Design tokens ---------- */
+/* Dark theme is the default. Switch to light with the toggle button
+   (it sets data-theme="light" on <html>). */
+:root {
+  color-scheme: dark;           /* dark scrollbars + form controls */
+  --accent: #00e5c3;            /* main teal */
+  --accent-dark: #00b39a;       /* teal on hover */
+  --accent-soft: rgba(0, 229, 195, 0.12);
+  --on-accent: #05261f;         /* text placed on top of the accent */
+  --bg: #0a0c11;                /* page background — darkest layer */
+  --surface: #151a22;           /* cards — clearly lighter than bg */
+  --text: #eef1f4;
+  --text-muted: #9aa3ad;
+  --nav-bg: #12161d;            /* nav bar — distinct from the page bg */
+  --nav-text: #eef1f4;
+  --border: rgba(255, 255, 255, 0.15);
+  --radius: 14px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --transition: 0.25s ease;
 }
-h1{
-    text-align: center;
-    color: #eb183b;
-    text-shadow: 5px 2px 3px black;
-    letter-spacing: 0.4em;
+
+/* Light theme — applied when the toggle sets data-theme="light" */
+[data-theme="light"] {
+  color-scheme: light;
+  --accent: #0b8f6f;
+  --accent-dark: #087155;
+  --accent-soft: rgba(11, 143, 111, 0.12);
+  --on-accent: #ffffff;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --text: #2c2c2e;
+  --text-muted: #6e6e73;
+  --nav-bg: #23262b;
+  --nav-text: #f2f2f2;
+  --border: rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.16);
 }
-h1:first-letter{
-  font-size: 200%;
+
+/* ---------- Base / reset ---------- */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-h3{
-  font-size: 2.4em;
-  color: #eb183b;
-  line-height: 2.5em;
-  letter-spacing: 0.2em;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* keep anchored game titles clear of the sticky nav */
 }
-/* Add a black background color to the top navigation */
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  padding-bottom: 60px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+a {
+  color: var(--accent);
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--accent-dark);
+}
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  text-align: center;
+  color: var(--accent);
+  font-size: 2.4rem;
+  letter-spacing: 0.06em;
+  margin: 45px 20px 20px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+h1:first-letter {
+  font-size: 170%;
+}
+
+/* Site title ("My Web Page" — set by index.js) gets the handwriting font */
+#hh1 {
+  font-family: "EduHand", "Segoe UI", Arial, cursive;
+  font-size: 3.2rem;
+  margin-top: 55px;
+  background: linear-gradient(135deg, var(--accent), #4d9fff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+h2 {
+  color: var(--text);
+  font-size: 1.6rem;
+  margin: 30px 0 12px;
+}
+
+h3 {
+  color: var(--accent);
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  margin: 32px 0 10px;
+}
+
+p {
+  color: var(--text);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+/* ---------- Navigation ---------- */
 .topnav {
-    background-color: #333;
-    overflow: hidden;
+  background-color: var(--nav-bg);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.topnav a {
+  color: var(--nav-text);
+  padding: 16px 22px;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  border-bottom: 3px solid transparent;
+  transition: background-color var(--transition), color var(--transition),
+    border-color var(--transition);
+}
+
+.topnav a:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-bottom-color: var(--accent);
+}
+
+.topnav a.active {
+  background-color: var(--accent-soft);
+  color: #fff;
+  border-bottom-color: var(--accent);
+}
+
+/* Dark / light toggle button inside the nav */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--nav-text);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 8px 12px;
+  margin: 8px 0 8px auto; /* pushes the button to the right of the nav */
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+}
+
+/* ---------- Home page gallery ---------- */
+.gallery {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(33.33% - 30px);
+  margin: 15px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.gallery:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.gallery a {
+  display: block;
+}
+
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery:hover img {
+  transform: scale(1.04);
+}
+
+.desc {
+  padding: 14px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Projects page: videos + play links ---------- */
+video {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin: 20px auto 10px;
+  background: #000;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+
+/* "▶ Play ..." links on the projects page become pill buttons
+   (external https links only, so the gallery cards stay clean;
+   resume buttons with class .button keep their own style) */
+a[target="_blank"][href^="https://"]:not(.button) {
+  display: inline-block;
+  margin: 6px 0 28px;
+  padding: 10px 20px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color var(--transition), color var(--transition),
+    transform var(--transition);
+}
+
+a[target="_blank"][href^="https://"]:not(.button):hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: translateY(-2px);
+}
+
+/* ---------- About page ---------- */
+.about-section {
+  max-width: 820px;
+  margin: 45px auto 30px;
+  padding: 40px 28px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px var(--accent-soft), var(--shadow-md);
+  font-size: 1.15rem;
+}
+
+.about-section p {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.contact-line {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.about-section a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.about-section a:hover {
+  color: var(--accent-dark);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 26px;
+  padding: 20px;
+}
+
+.column {
+  flex: 1 1 280px;
+  max-width: 340px;
+  margin-bottom: 16px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.card .container {
+  padding: 20px;
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+}
+
+.card .title {
+  color: var(--text-muted);
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.AboutP {
+  text-transform: none;
+  text-align: justify;
+}
+
+.title {
+  color: var(--text-muted);
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  color: var(--on-accent);
+  background-color: var(--accent);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.button:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- Resume page ---------- */
+.section-title {
+  text-align: center;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 1.4rem;
+  margin: 45px 20px 10px;
+}
+
+.resume-card .container {
+  text-align: center;
+}
+
+.resume-icon {
+  display: block;
+  font-size: 2.8rem;
+  line-height: 1;
+  padding: 26px 0 0;
+  text-align: center;
+}
+
+/* Tech tags under project descriptions */
+.tech-tag {
+  display: inline-block;
+  margin: 4px 6px 0 0;
+  padding: 4px 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Skill power bars */
+.skills {
+  max-width: 720px;
+  margin: 10px auto 40px;
+  padding: 10px 24px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.skill-name {
+  flex: 0 0 170px;
+  font-weight: 600;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  animation: skillGrow 1.2s ease forwards;
+}
+
+@keyframes skillGrow {
+  from {
+    width: 0;
   }
-  
-  /* Style the links inside the navigation bar */
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+}
+
+.skill-value {
+  flex: 0 0 42px;
+  text-align: right;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .gallery {
+    width: calc(50% - 30px);
   }
-  
-  /* Change the color of links on hover */
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
+  video {
+    max-width: 100%;
   }
-  
-  /* Add a color to the active/current link */
-  .topnav a.active {
-    background-color: #eb183b;
-    color: white;
-  }
-  div.gallery {
-    margin: 5px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 400px;
-    font-size: 2em;
-  }
-  
-  div.gallery:hover {
-    border: 1px solid #777;
-  }
-  
-  div.gallery img {
-    width: 100%;
-    height: 250px;
-  }
-  
-  div.desc {
-    padding: 15px;
-    text-align: center;
-  }
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-  }
-  
-  html {
-    box-sizing: border-box;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-  
+}
+
+@media (max-width: 550px) {
   .column {
-    float: left;
-    width: 33.3%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-  }
-  
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 8px;
-  }
-  
-  .about-section {
-    padding: 20px;
-    text-align: center;
-    background-color: hsl(60, 90%, 80%);
-    color: rgb(248, 36, 36);
-    font-size: 2em;
-  }
-  
-  .container {
-    padding: 0 16px;
-  }
-  
-  .container::after, .row::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  
-  .title {
-    color: grey;
-  }
-  
-  .button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
     width: 100%;
+    display: block;
   }
-  
-  .button:hover {
-    background-color: #555;
+  .gallery {
+    width: calc(100% - 30px);
   }
-  
-  @media screen and (max-width: 550px) {
-    .column {
-      width: 100%;
-      display: block;
-    }
+  .topnav a {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 14px 8px;
   }
+  h1 {
+    font-size: 1.9rem;
+    letter-spacing: 0.04em;
+  }
+  #hh1 {
+    font-size: 2.3rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  .skill-name {
+    flex-basis: 110px;
+    font-size: 0.95rem;
+  }
+  .skill {
+    gap: 8px;
+  }
+}
